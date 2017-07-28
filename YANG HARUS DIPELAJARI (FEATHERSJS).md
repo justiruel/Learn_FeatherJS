@@ -1,4 +1,4 @@
-#YANG HARUS DIPELAJARI (FEATHERSJS)
+# YANG HARUS DIPELAJARI (FEATHERSJS)
 
 -cara deploy ke produksi
 -cara bikin service dalam service
