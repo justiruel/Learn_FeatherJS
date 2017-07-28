@@ -1,7 +1,7 @@
 # YANG HARUS DIPELAJARI (FEATHERSJS)
 
--cara deploy ke produksi
--cara bikin service dalam service
--beda middleware dan hook
--jwt versi manual dan otomatis
--metode populate mongoose 
+-cara deploy ke produksi<br/>
+-cara bikin service dalam service<br/>
+-beda middleware dan hook<br/>
+-jwt versi manual dan otomatis<br/>
+-metode populate mongoose
