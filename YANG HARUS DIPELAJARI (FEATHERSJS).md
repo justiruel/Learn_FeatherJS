@@ -4,4 +4,7 @@
 -cara bikin service dalam service<br/>
 -beda middleware dan hook<br/>
 -jwt versi manual dan otomatis<br/>
--metode populate mongoose
+-metode populate mongoose<br/>
+-webpack<br/>
+-gulp<br/>
+-grunt
