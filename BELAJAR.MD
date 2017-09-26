@@ -1,4 +1,4 @@
-######  Set agar middleware harus melewati authentikasi (FeathersJS)
+##  Set agar middleware harus melewati authentikasi (FeathersJS)
 
 ```
 //ref: https://github.com/feathersjs/feathers-authentication/issues/495
