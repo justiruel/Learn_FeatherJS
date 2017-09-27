@@ -67,3 +67,23 @@ module.exports = function () {
 };
 
 ```
+
+## Join Populate tanpa register ref di schema
+
+```
+applicantListToExport: function (query, callback) {
+  this
+   .find(query).select({'advtId': 0})
+   .populate({
+      path: 'influId',
+      model: 'influencer',
+      select: { '_id': 1,'user':1},
+      populate: {
+        path: 'userid',
+        model: 'User'
+      }
+   })
+ .populate('campaignId',{'campaignTitle':1})
+ .exec(callback);
+}
+```
