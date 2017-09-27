@@ -82,3 +82,19 @@ this.ModelPhotoblogTransaction.find(
           return resolve(result);
         });
 ```
+
+## Where after populate mongoose
+
+```
+// Get the _ids of the users of the selected country.
+User.find({country: country}, {_id: 1}, function(err, users) {
+
+    // Map the user docs into an array of just the _ids
+    var ids = users.map(function(user) { return user._id; });
+
+    // Get the posts whose _creator is in that set of ids
+    Post.find({_creator: {$in: ids}}).populate('_creator').exec(function(err, posts) {
+        // posts contains your answer
+    });
+});
+```
