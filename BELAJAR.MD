@@ -185,3 +185,32 @@ return Promise
 	throw err;
 });
 ```
+
+## Mongoose -> Find 
+
+```
+this.ModelPhotoblogTransaction.find({}, function (err, result) {
+              if (err) return reject(err);               
+              return resolve(result);
+});
+```
+
+## ## Mongoose -> Find -> where $and statement
+
+```
+         
+this.ModelPhotoblogTransaction.find({
+  $and:[
+    {schoolcode: {$regex:params.query.schoolcode}},
+    {title: {$regex:params.query.title}},
+    {status: {$regex:params.query.status}},
+
+  ]
+  //schoolcode: {$regex:params.query.schoolcode}   // --> /a/   =  %a% -> like  | regex == like in sql
+}, function (err, result) {
+  if (err) return reject(err);
+  return resolve(result);
+});
+        
+```
+
