@@ -151,3 +151,37 @@ this.ModelPhotoblogTransaction.find(
   //return resolve(rst);
 });
 ```
+
+## Menggunakan bluebird promise
+
+```
+const Promise = require('bluebird');
+
+var tmp;     
+return Promise
+.all([
+	perintah1,
+	perintah2,
+	perintah3,
+])
+.then(function (results) {
+	const hasilperintah1 = results[0];
+	const hasilperintah2 = results[1];
+	const hasilperintah3 = results[2];
+	tmp = proses_utama(hasilperintah1,hasilperintah2,hasilperintah3);
+	return true;
+})
+.then(parameterArrowFunction => {
+	return tmp+xyz;	
+})
+.then(function(results){
+    	res.send("sukses!");
+})
+.catch(err => {
+	console.log(err);
+	console.log(err.stack);
+	// throwing error is important. Otherwise promise will be resolved with value returned
+	// by this function (undefined) and next `.then()` callback in the chain will be executed
+	throw err;
+});
+```
