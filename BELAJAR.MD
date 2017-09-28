@@ -226,3 +226,20 @@ console.log(results._id);
 });
 ```
 
+## Mongoose -> Update
+
+```
+this.ModelPhotoblogTransaction.findOneAndUpdate({
+  _id: this.mongooseClient.Types.ObjectId(params.query.id)},
+  {$set:{status:params.query.status}},
+  {new: true}, function(err, results){
+    if(err) console.log(err);           
+    var reslt = {};
+    reslt.status = 200;
+    reslt.data = results;
+    return resolve(reslt);
+});
+
+```
+ket. : new: bool - if true, return the modified document rather than the original. defaults to false (changed in 4.0)
+ref : https://stackoverflow.com/a/32811548
