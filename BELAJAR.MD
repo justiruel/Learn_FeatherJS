@@ -195,7 +195,7 @@ this.ModelPhotoblogTransaction.find({}, function (err, result) {
 });
 ```
 
-## ## Mongoose -> Find -> where $and statement
+## Mongoose -> Find -> where $and statement
 
 ```
          
@@ -212,5 +212,17 @@ this.ModelPhotoblogTransaction.find({
   return resolve(result);
 });
         
+```
+
+## Mongoose -> Save
+
+```
+var photoblog = this.options.Model; //manual model
+var pb = new photoblog({ //manual model
+linkfile: 'asek' 
+});
+pb.save(function (err, results) { //manual model
+console.log(results._id);
+});
 ```
 
