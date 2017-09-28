@@ -83,18 +83,71 @@ this.ModelPhotoblogTransaction.find(
         });
 ```
 
+## Mapping function
+
+```
+var ids = users.map(function(user) { return user._id; });
+```
+
+## Reverse Populate
+
+```
+var reversePopulate = require('mongoose-reverse-populate');
+
+var MT = this.ModelPhotoblogTransaction;
+        this.ModelPhotoblogUser.find({_id:this.mongooseClient.Types.ObjectId("59390287ad89b52590dd74fe")}).select({ '_id': 1,'first_name':1,'last_name':1}).exec(function(err, users) {
+            var opts = {
+                modelArray: users,  //hasil find ModelPhotoblogUser
+                storeWhere: "transaction", //nama properti dimana hasil populate diletakkan
+                arrayPop: true,  //jika data pada hasil query ModelPhotoblogUser punya banyak relasi di model photoblog   transaction maka harus true agar resultnya berua array (intinya agar resultnya berbentuk array)
+                mongooseModel: MT,  //model dimana foreign key dari this.ModelPhotoblogUser  terletak
+                idField: "user_id"  //nama foreign key of user yang terletak di this.ModelPhotoblogTransaction
+            }
+        
+            reversePopulate(opts, function(err, popAuthors) {
+                popAuthors.forEach(function(item,index){
+                  console.log(item.transaction);
+                });
+                console.log(popAuthors);
+            });
+        });
+```
+
+KETERANGAN : <br/>
+Setelah proses reversePopulate, jika dijalankan perintah console.log(popAuthors) maka property <b>transaction</b> tidak akan muncul, tapi kalau popAuthors di forEach lalu lakukan perintah console.log(item.transaction) maka akan muncul.<br/>
+ref: https://www.npmjs.com/package/mongoose-reverse-populate
+
+
+
+
 ## Where after populate mongoose
 
 ```
-// Get the _ids of the users of the selected country.
-User.find({country: country}, {_id: 1}, function(err, users) {
+var _ = require('lodash');
 
-    // Map the user docs into an array of just the _ids
-    var ids = users.map(function(user) { return user._id; });
+this.ModelPhotoblogTransaction.find(
+    query
+  )
+.populate({
+  path: 'user_id',
+  model: 'users',
+  //match: { first_name:{$regex:"teach"}},
+  select: { '_id': 1,'first_name':1,'last_name':1},
+})
+.exec(function(err,result){
+  //Kalau find jadi object, kalau filter jadi array
+  /*var rst =   _.find(result, function(o) { 
+                return o.user_id.first_name == "1teacher"; 
+              });*/
+  var rst = _.filter(result, obj => { // --> /^aaa/ = "%aaa"    --> /^aaa&/ = "%aaa%"
+    //return /1teache/.test(obj.user_id.first_name);
 
-    // Get the posts whose _creator is in that set of ids
-    Post.find({_creator: {$in: ids}}).populate('_creator').exec(function(err, posts) {
-        // posts contains your answer
-    });
+    var replace = query_name;
+    var re = new RegExp(replace,"g");
+    return re.test(obj.user_id.first_name);
+
+  }); 
+  // var ids = this.ModelPhotoblogUser.map(function(user) { return user._id; });
+  //return resolve(rst);
 });
 ```
