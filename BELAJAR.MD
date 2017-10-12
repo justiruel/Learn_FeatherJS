@@ -122,7 +122,7 @@ kecuali menggunakan lean, contoh :
 ```
 find({}).lean().exec(function(err, users) {}
 ```
-maka property <b>transaction</b> akan muncul
+maka property <b>transaction</b> akan muncul <br/>
 ref : https://stackoverflow.com/a/14510823
 
 
