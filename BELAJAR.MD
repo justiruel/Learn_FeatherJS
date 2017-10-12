@@ -117,6 +117,15 @@ KETERANGAN : <br/>
 Setelah proses reversePopulate, jika dijalankan perintah console.log(popAuthors) maka property <b>transaction</b> tidak akan muncul, tapi kalau popAuthors di forEach lalu lakukan perintah console.log(item.transaction) maka akan muncul.<br/>
 ref: https://www.npmjs.com/package/mongoose-reverse-populate
 
+kecuali menggunakan lean, contoh :
+
+```
+find({}).lean().exec(function(err, users) {}
+```
+maka property <b>transaction</b> akan muncul
+ref : https://stackoverflow.com/a/14510823
+
+
 
 
 
