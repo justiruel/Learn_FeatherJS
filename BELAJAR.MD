@@ -252,3 +252,12 @@ this.ModelPhotoblogTransaction.findOneAndUpdate({
 ```
 ket. : new: bool - if true, return the modified document rather than the original. defaults to false (changed in 4.0)
 ref : https://stackoverflow.com/a/32811548
+
+
+## Agar result dari mongoose dapat di modifikasi
+gunakan .lean() contoh :
+
+```
+find({}).lean().exec(function(err, users) {}
+```
+ref: https://stackoverflow.com/a/14510823
