@@ -86,7 +86,7 @@ this.ModelPhotoblogTransaction.find(
 ## Mapping function
 
 ```
-var ids = users.map(function(user) { return user._id; });
+var ids = users.map(function(item,index) { return item._id; });
 ```
 
 ## Reverse Populate
