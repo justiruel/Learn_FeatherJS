@@ -261,3 +261,14 @@ gunakan .lean() contoh :
 find({}).lean().exec(function(err, users) {}
 ```
 ref: https://stackoverflow.com/a/14510823
+
+
+
+## How to use a variable as a field name in mongodb/mongoose
+```
+var name=req.params.name;
+var value = req.params.value;
+collection.findOne({[name]:value}, function(err, item) {
+res.send(item);
+});
+```
