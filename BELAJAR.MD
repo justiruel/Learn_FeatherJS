@@ -265,6 +265,7 @@ ref: https://stackoverflow.com/a/14510823
 
 
 ## How to use a variable as a field name in mongodb/mongoose
+nama field di kurung [name]
 ```
 var name=req.params.name;
 var value = req.params.value;
